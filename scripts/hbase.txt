@@ -1,0 +1,19 @@
+# Comandos executados no HBase Shell
+
+# Criando a tabela 'professor' com as Column Families
+create 'professor', {NAME=>'identificacao'}, {NAME=>'funcao'}
+
+# Verificando a estrutura criada
+describe 'professor'
+
+# Inserindo dados na Row Key PF001
+put 'professor', 'PF001', 'identificacao:nome', 'Rita'
+put 'professor', 'PF001', 'identificacao:sobrenome', 'Rodrigues'
+put 'professor', 'PF001', 'funcao:cargo', 'Coordenadora'
+put 'professor', 'PF001', 'funcao:carga', '520'
+
+# Consultas (Get e Scan)
+get 'professor', 'PF001'
+get 'professor', 'PF001', {COLUMNS=>['identificacao']}
+get 'professor', 'PF001', {COLUMNS=>['identificacao:sobrenome']}
+scan 'professor'
